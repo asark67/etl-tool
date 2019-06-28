@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%5p [%d] %c{2} [%F(%M:%L)] %m%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="console"/>
+    </Root>
+    <Logger name="scriptella.core" level="info" />
+    <Logger name="scriptella.DriverManagerLog" level="info" />
+    <Logger name="com.inservio.tools.etl.driver.sybase.SecureDriver" level="debug" />
+    <Logger name="com.inservio.tools.etl.EtlTool" level="debug" />
+    <Logger name="com.inservio.tools.PasswordTool" level="debug" />
+  </Loggers>
+</Configuration>

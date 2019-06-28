@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Properties>
+    <Property name="log_file">${sys:LOG_FILE}</Property>
+  </Properties>
+  <Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%5p [%d] %c{2} [%F(%M:%L)] %m%n"/>
+    </Console>
+    <RollingFile name="file" fileName="${log_file}" filePattern="${log_file}-%d{yyyy-MM-dd}-%i">
+      <PatternLayout pattern="%5p [%d] %c{2} [%F(%M:%L)] %m%n"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="10M" />
+      </Policies>
+      <DefaultRolloverStrategy max="5" />
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="console"/>
+      <AppenderRef ref="file"/>
+    </Root>
+    <Logger name="com.musi.pvhub.core.PVHubBase" level="debug" />
+    <Logger name="com.musi.pvhub.database.SqlUpdater" level="debug" />
+    <Logger name="scriptella.core" level="info" />
+    <Logger name="scriptella.DriverManagerLog" level="info" />
+    <Logger name="com.musi.pvhub.etl.PVHFileCollector" level="debug" />
+    <Logger name="com.musi.pvhub.etl.PVHCollector" level="debug" />
+    <Logger name="com.musi.pvhub.etl.PVHLoader" level="debug" />
+  </Loggers>
+</Configuration>
