@@ -40,30 +40,22 @@
     <dependency>
       <groupId>com.javaforge.scriptella</groupId>
       <artifactId>scriptella-core</artifactId>
-      <version>1.2-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/external/scriptella-core.jar</systemPath>
+      <version>1.1</version>
     </dependency>
     <dependency>
       <groupId>com.javaforge.scriptella</groupId>
       <artifactId>scriptella-drivers</artifactId>
-      <version>1.2-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/external/scriptella-drivers.jar</systemPath>
+      <version>1.1</version>
     </dependency>
     <dependency>
       <groupId>com.javaforge.scriptella</groupId>
       <artifactId>scriptella-tools</artifactId>
-      <version>1.2-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/external/scriptella-tools.jar</systemPath>
+      <version>1.1</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.commons.jexl</groupId>
+      <groupId>org.apache.commons</groupId>
       <artifactId>commons-jexl</artifactId>
-      <version>1.2-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/external/commons-jexl.jar</systemPath>
+      <version>2.1.1</version>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.jtds</groupId>
