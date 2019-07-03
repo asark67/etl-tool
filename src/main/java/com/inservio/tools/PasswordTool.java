@@ -10,7 +10,7 @@ import java.util.logging.Logger;
  */
 public class PasswordTool {
   private final static String ALGORITHM = "PBEWithMD5AndDES";
-  private final static String PASSWORD_KEY_ENV_VARIABLE = System.getProperty("key.env.var","ETLTOOL-KEY");
+  private final static String PASSWORD_KEY_ENV_VARIABLE = System.getProperty("key.env.var","ETLTOOL_KEY");
 
   private static StandardPBEStringEncryptor enc;
 

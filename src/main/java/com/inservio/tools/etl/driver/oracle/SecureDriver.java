@@ -1,10 +1,12 @@
-package com.inservio.tools.etl.driver.sybase;
+package com.inservio.tools.etl.driver.oracle;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
+import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
 import scriptella.jdbc.JdbcConnection;
 import scriptella.jdbc.JdbcException;
 import scriptella.spi.ConnectionParameters;
+import scriptella.util.ExceptionUtils;
 
 import java.sql.SQLException;
 import java.util.Properties;
@@ -15,7 +17,7 @@ import java.util.regex.Pattern;
 /**
  * Created by asark on 18/09/2015.
  */
-public class SecureDriver extends scriptella.driver.sybase.Driver {
+public class SecureDriver extends scriptella.driver.oracle.Driver {
   private final static Logger log = Logger.getLogger(SecureDriver.class.getName());
   private final static String ALGORITHM = "PBEWithMD5AndDES";
   private final static String PASSWORD_KEY_ENV_VARIABLE = System.getProperty("key.env.var","ETLTOOL_KEY");
@@ -47,7 +49,12 @@ public class SecureDriver extends scriptella.driver.sybase.Driver {
       if (params.getPassword() != null) {
         Matcher matcher = pattern.matcher(params.getPassword());
         if (matcher.find()) {
-          props.put("password", enc.decrypt(matcher.group(1)));
+          try {
+            props.put("password", enc.decrypt(matcher.group(1)));
+          } catch (EncryptionOperationNotPossibleException e) {
+            log.fine("Bad password supplied");
+            throw e;
+          }
         } else {
           props.put("password", params.getPassword());
         }

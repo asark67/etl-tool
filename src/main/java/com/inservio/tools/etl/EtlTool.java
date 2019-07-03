@@ -48,8 +48,12 @@ public class EtlTool {
       if (arg.startsWith("/")) {
         String[] elements = arg.substring(1).split("=");
         log.fine(elements[0] + "=" + elements[1]);
-        if (elements[0].equalsIgnoreCase("TEMPLATE"))
-          template = new File("etl/"+elements[1]);
+        if (elements[0].equalsIgnoreCase("TEMPLATE")) {
+          template = new File("etl/" + elements[1]);
+          if (!template.exists()) {
+            template = new File(elements[1]);
+          }
+        }
         else
           props.setProperty(elements[0], elements[1]);
       }
@@ -60,7 +64,7 @@ public class EtlTool {
     if (template != null) {
       tool.process(template);
     } else {
-      System.out.println("usage: "+tool.getClass().getName()+" /template=[template-name] {[/property_name=property_value] [/property_name=property_value] ...}");
+      System.out.println("usage: "+tool.getClass().getName()+" /template=[template-name] {/[property_name]=[property_value] /[property_name]=[property_value] ...}");
       System.out.println("\ttemplate-name lives in the etl folder");
       System.exit(-1);
     }

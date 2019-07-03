@@ -11,9 +11,9 @@
         </Root>
         <Logger name="scriptella.core" level="info" />
         <Logger name="scriptella.DriverManagerLog" level="info" />
-        <Logger name="com.inservio.tools.etl.driver.sybase.SecureDriver" level="info" />
-        <Logger name="com.inservio.tools.etl.driver.oracle.SecureDriver" level="info" />
-        <Logger name="com.inservio.tools.etl.EtlTool" level="info" />
-        <Logger name="com.inservio.tools.PasswordTool" level="info" />
+        <Logger name="com.inservio.tools.etl.driver.sybase.SecureDriver" level="debug" />
+        <Logger name="com.inservio.tools.etl.driver.oracle.SecureDriver" level="debug" />
+        <Logger name="com.inservio.tools.etl.EtlTool" level="debug" />
+        <Logger name="com.inservio.tools.PasswordTool" level="debug" />
     </Loggers>
 </Configuration>
