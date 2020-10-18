@@ -19,7 +19,8 @@ import java.util.regex.Pattern;
  */
 public class SecureDriver extends scriptella.driver.oracle.Driver {
   private final static Logger log = Logger.getLogger(SecureDriver.class.getName());
-  private final static String ALGORITHM = "PBEWithMD5AndDES";
+  private final static String ALGORITHM = "PBEWITHHMACSHA512ANDAES_256";
+  private final static String GENERATOR_CLASS_NAME = "org.jasypt.iv.RandomIvGenerator";
   private final static String PASSWORD_KEY_ENV_VARIABLE = System.getProperty("key.env.var","ETLTOOL_KEY");
 
   private static StandardPBEStringEncryptor enc;
@@ -27,9 +28,10 @@ public class SecureDriver extends scriptella.driver.oracle.Driver {
   public SecureDriver() {
     super();
     if (enc==null) {
-      log.fine("Secure Driver using algorithm: "+ALGORITHM+", key_env_variable: "+PASSWORD_KEY_ENV_VARIABLE);
+      log.fine("Secure Driver using algorithm: "+ALGORITHM+", ivGeneratorClassName: "+GENERATOR_CLASS_NAME+", key_env_variable: "+PASSWORD_KEY_ENV_VARIABLE);
       EnvironmentStringPBEConfig e = new EnvironmentStringPBEConfig();
       e.setAlgorithm(ALGORITHM);
+      e.setSaltGeneratorClassName(GENERATOR_CLASS_NAME);
       e.setPasswordEnvName(PASSWORD_KEY_ENV_VARIABLE);
       enc = new StandardPBEStringEncryptor();
       enc.setConfig(e);
