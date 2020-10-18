@@ -1,4 +1,4 @@
-package com.inservio.tools.etl.driver.oracle;
+package com.inservio.tools.etl.driver.mysql;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
@@ -6,7 +6,6 @@ import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
 import scriptella.jdbc.JdbcConnection;
 import scriptella.jdbc.JdbcException;
 import scriptella.spi.ConnectionParameters;
-import scriptella.util.ExceptionUtils;
 
 import java.sql.SQLException;
 import java.util.Properties;
@@ -17,7 +16,7 @@ import java.util.regex.Pattern;
 /**
  * Created by asark on 18/09/2015.
  */
-public class SecureDriver extends scriptella.driver.oracle.Driver {
+public class SecureDriver extends scriptella.driver.mysql.Driver {
   private final static Logger log = Logger.getLogger(SecureDriver.class.getName());
   private final static String ALGORITHM = "PBEWITHHMACSHA512ANDAES_256";
   private final static String IVGENERATOR_CLASS_NAME = "org.jasypt.iv.RandomIvGenerator";

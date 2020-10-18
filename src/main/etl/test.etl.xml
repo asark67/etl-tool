@@ -6,7 +6,7 @@
     eol=\n
     separator=|
   </connection>
-  <connection id="db" driver="com.inservio.tools.etl.driver.sybase.SecureDriver" url="$db1.url" user="$db1.user" password="$db1.pass">
+  <connection id="db" driver="com.inservio.tools.etl.driver.mysql.SecureDriver" url="$db2.url" user="$db2.user" password="$db2.pass">
     statement.fetchSize = 1000
   </connection>
 
@@ -19,6 +19,6 @@
   </script>
 
   <query connection-id="db">
-    select * from TRN_HDR_DBF
+    select * from account
   </query>
 </etl>
